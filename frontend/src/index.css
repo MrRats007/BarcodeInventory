@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-gray-800 antialiased bg-white;
+  }
+}
+
+@layer components {
+  /* ── Buttons ──────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg font-medium text-sm
+           transition-all duration-150 disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-gray-900 text-white hover:bg-gray-700;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 hover:text-gray-800;
+  }
+  .btn-danger {
+    @apply btn bg-red-500 text-white hover:bg-red-600;
+  }
+  .btn-success {
+    @apply btn bg-emerald-600 text-white hover:bg-emerald-700;
+  }
+  .btn-ghost {
+    @apply btn text-gray-500 hover:bg-gray-100 hover:text-gray-700;
+  }
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+
+  /* ── Inputs ───────────────────────────────────────────── */
+  .input {
+    @apply w-full px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-800
+           placeholder-gray-400 bg-white
+           focus:outline-none focus:ring-2 focus:ring-gray-900/10 focus:border-gray-400
+           transition-colors;
+  }
+
+  /* ── Cards ────────────────────────────────────────────── */
+  .card {
+    @apply bg-white rounded-xl border border-gray-100;
+  }
+  .card-subtle {
+    @apply bg-gray-50/60 rounded-xl border border-gray-100;
+  }
+
+  /* ── Badges ───────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-blue   { @apply badge bg-blue-50 text-blue-600; }
+  .badge-green  { @apply badge bg-emerald-50 text-emerald-700; }
+  .badge-red    { @apply badge bg-red-50 text-red-600; }
+  .badge-yellow { @apply badge bg-amber-50 text-amber-700; }
+  .badge-gray   { @apply badge bg-gray-100 text-gray-500; }
+}
+
+/* ── Safe areas (iPhone notch / home indicator) ─────────── */
+:root {
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left:   env(safe-area-inset-left, 0px);
+  --safe-right:  env(safe-area-inset-right, 0px);
+}
+
+/* Push main content above bottom nav on mobile */
+.mobile-scroll-pad {
+  padding-bottom: calc(4rem + var(--safe-bottom));
+}
+
+/* Bottom nav sits above home indicator */
+.bottom-nav {
+  padding-bottom: var(--safe-bottom);
+}
+
+/* ── Print ──────────────────────────────────────────────── */
+@media print {
+  .no-print   { display: none !important; }
+  .print-only { display: block !important; }
+  body { background: white; }
+}
